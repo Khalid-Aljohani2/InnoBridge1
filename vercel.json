@@ -1,4 +1,4 @@
 {
-  "installCommand": "npm install lucide-react@1.14.0 && npm install",
+  "installCommand": "npm install",
   "buildCommand": "npm run build"
 }

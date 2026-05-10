@@ -1,8 +1,63 @@
-import { Globe, Moon, Sun } from 'lucide-react';
-
 /**
- * Theme + language toggles. Icons-only mode uses fixed square buttons so layout does not jump.
+ * Theme + language toggles. Inline SVGs avoid bundler resolution issues when CI skips optional deps.
  */
+function IconGlobe({ className }) {
+    return (
+        <svg
+            className={className}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+        >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+        </svg>
+    );
+}
+
+function IconMoon({ className }) {
+    return (
+        <svg
+            className={className}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+        >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+    );
+}
+
+function IconSun({ className }) {
+    return (
+        <svg
+            className={className}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+        >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+    );
+}
+
 export default function UiControls({
     isDark,
     isArabic,
@@ -43,7 +98,7 @@ export default function UiControls({
                     title={langAria}
                     aria-label={langAria}
                 >
-                    <Globe className={compact ? 'h-4 w-4' : 'h-[18px] w-[18px]'} aria-hidden strokeWidth={2} />
+                    <IconGlobe className={compact ? 'h-4 w-4' : 'h-[18px] w-[18px]'} />
                 </button>
                 <button
                     type="button"
@@ -55,9 +110,9 @@ export default function UiControls({
                     aria-label={themeAria}
                 >
                     {isDark ? (
-                        <Sun className={compact ? 'h-4 w-4' : 'h-[18px] w-[18px]'} aria-hidden strokeWidth={2} />
+                        <IconSun className={compact ? 'h-4 w-4' : 'h-[18px] w-[18px]'} />
                     ) : (
-                        <Moon className={compact ? 'h-4 w-4' : 'h-[18px] w-[18px]'} aria-hidden strokeWidth={2} />
+                        <IconMoon className={compact ? 'h-4 w-4' : 'h-[18px] w-[18px]'} />
                     )}
                 </button>
             </div>
@@ -76,7 +131,7 @@ export default function UiControls({
                 }`}
                 title={langAria}
             >
-                <Globe className="h-4 w-4" aria-hidden strokeWidth={2} />
+                <IconGlobe className="h-4 w-4" />
                 <span>{isArabic ? 'EN' : 'عربي'}</span>
             </button>
             <button
@@ -87,7 +142,7 @@ export default function UiControls({
                 }`}
                 title={themeAria}
             >
-                {isDark ? <Sun className="h-4 w-4" aria-hidden strokeWidth={2} /> : <Moon className="h-4 w-4" aria-hidden strokeWidth={2} />}
+                {isDark ? <IconSun className="h-4 w-4" /> : <IconMoon className="h-4 w-4" />}
                 <span>{isDark ? 'Light' : 'Dark'}</span>
             </button>
         </div>
