@@ -1,7 +1,14 @@
-# استخدم نسخة PHP رسمية مع Apache
+# Stage 1: Vite manifest + hashed assets (@vite في Blade لا يعمل بدون public/build).
+FROM node:22-bookworm AS vite_assets
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Stage 2: Laravel + Apache
 FROM php:8.2-apache
 
-# تثبيت الإضافات الضرورية لـ Laravel و PostgreSQL (Supabase)
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libpq-dev \
@@ -10,36 +17,26 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    curl
+    curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# تنظيف الكاش
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# تثبيت إضافات PHP
 RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd
 
-# تفعيل موديل Rewrite في Apache (ضروري لروابط Laravel)
 RUN a2enmod rewrite
 
-# ضبط المجلد الرئيسي لـ Apache ليشير إلى مجلد public في Laravel
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
+    && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# تثبيت Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# نسخ ملفات المشروع
+WORKDIR /var/www/html
 COPY . /var/www/html
+COPY --from=vite_assets /app/public/build ./public/build
 
-# تثبيت مكتبات Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# إعطاء الصلاحيات لمجلدات Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-# المنفذ الافتراضي لـ Render
 EXPOSE 80
 
-# أمر التشغيل
 CMD ["apache2-foreground"]

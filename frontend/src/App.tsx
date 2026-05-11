@@ -65,6 +65,24 @@ function App() {
         <main style={{ fontFamily: 'system-ui,sans-serif', maxWidth: 640, margin: '3rem auto', padding: '0 1rem' }}>
             <h1 style={{ marginBottom: '0.5rem' }}>InnoBridge — واجهة SPA منفصلة</h1>
 
+            <p style={{ marginTop: '0.25rem', marginBottom: '1rem' }}>
+                <a
+                    href={`${getApiBaseUrl()}/login`}
+                    style={{
+                        display: 'inline-block',
+                        background: '#0284c7',
+                        color: '#fff',
+                        padding: '12px 22px',
+                        borderRadius: 10,
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                        boxShadow: '0 2px 8px rgba(2,132,199,0.35)',
+                    }}
+                >
+                    فتح التطبيق الكامل (تسجيل الدخول على الخادم)
+                </a>
+            </p>
+
             {import.meta.env.PROD &&
             (getApiBaseUrl().includes('127.0.0.1') || getApiBaseUrl().includes('localhost')) ? (
                 <p
@@ -83,6 +101,37 @@ function App() {
                     البناء وليس وقت التشغيل.
                 </p>
             ) : null}
+
+            <p style={{ color: '#0f172a', background: '#e0f2fe', border: '1px solid #7dd3fc', padding: '1rem', borderRadius: 8, marginBottom: '1rem' }}>
+                <strong>ليست «واجهات مفقودة»:</strong> ما تراه على Netlify هو صفحة اختبار فقط. القوائم واللوحات الحقيقية تفتح من
+                الرابط أعلاه (Render / Laravel). لا تكتب عنوان Netlify ومعه عنوان كامل بدون مسافة؛ حتى لا يظهر عنوان مكسور
+                مثل <code style={{ fontSize: '0.8rem' }}>…netlify.apphttps://…</code>.
+                <span style={{ display: 'block', marginTop: '0.75rem' }}>
+                    <a
+                        href={`${getApiBaseUrl()}/login`}
+                        style={{
+                            marginInlineEnd: 12,
+                            color: '#0369a1',
+                            fontWeight: 700,
+                            wordBreak: 'break-all',
+                        }}
+                    >
+                        فتح الدخول على الخادم
+                    </a>
+                    <span style={{ color: '#64748b' }}> — </span>
+                    <a
+                        href={`${getApiBaseUrl()}/dashboard`}
+                        style={{
+                            marginInlineStart: 4,
+                            color: '#0369a1',
+                            fontWeight: 700,
+                            wordBreak: 'break-all',
+                        }}
+                    >
+                        فتح لوحة التحكم على الخادم
+                    </a>
+                </span>
+            </p>
 
             <p style={{ color: '#444', marginTop: 0 }}>
                 عنوان API الخلفي: <code>{getApiBaseUrl()}</code>

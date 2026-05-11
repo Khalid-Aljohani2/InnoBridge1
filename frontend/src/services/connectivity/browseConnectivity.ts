@@ -9,7 +9,7 @@ export async function probeLaravelPublicApi(originLabel: string): Promise<Larave
     try {
         const body = await fetchChallenges();
         const list = Array.isArray(body.data) ? body.data : [];
-        const statusNote = `${originLabel} ← ${typeof body.status === 'string' ? body.status : 'ok'}`;
+        const statusNote = `الاتصال من أصل المتصفّح (${originLabel}) — ${typeof body.status === 'string' ? body.status : 'ok'}`;
         return { ok: true, challengesCount: list.length, statusNote };
     } catch (e) {
         const err = normalizeAxiosError(e);

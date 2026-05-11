@@ -1,6 +1,6 @@
 # Base directory in Netlify UI should be `frontend` if the repo is the monorepo root.
 # Required env (Site → Environment variables → Production): rebuild after every change.
-#   VITE_API_BASE_URL = https://your-service.onrender.com   (no trailing slash; your Laravel on Render)
+#   VITE_API_BASE_URL = https://your-service.onrender.com   (no trailing slash, no …/api)
 # Optional:
 #   VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY — only if the SPA uses Supabase from the browser
 #   VITE_API_WITH_CREDENTIALS=true — only if you use Sanctum cookie/CSRF across origins (then set CORS on Laravel)

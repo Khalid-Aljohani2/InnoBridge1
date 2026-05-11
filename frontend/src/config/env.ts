@@ -10,8 +10,15 @@ const trim = (value: unknown): string =>
  * Laravel API origin (Sanctum / REST). Trailing slashes removed for axios baseURL safety.
  */
 export function getApiBaseUrl(): string {
-    const configured = trim(import.meta.env.VITE_API_BASE_URL);
-    if (configured) return configured.replace(/\/$/, '');
+    let configured = trim(import.meta.env.VITE_API_BASE_URL);
+    if (configured) {
+        configured = configured.replace(/\/+$/, '');
+        // Services use paths like `/api/...`; if env mistakenly ends with `/api`, strip it once.
+        if (/\/api$/i.test(configured)) {
+            configured = configured.replace(/\/api$/i, '');
+        }
+        return configured;
+    }
     return 'http://127.0.0.1:8000';
 }
 

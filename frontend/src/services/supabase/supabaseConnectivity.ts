@@ -11,8 +11,9 @@ export async function probeSupabaseConnectivity(): Promise<ConnectivityResult> {
     const cfg = getOptionalSupabaseEnv();
     if (!cfg) {
         return {
-            ok: false,
-            summary: 'متغيرات Supabase غير مُفعّلة (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY).',
+            ok: true,
+            summary:
+                'لم تُضبط متغيرات Supabase — هذا طبيعي: شاشات الطالب/المشرف تعمل عبر Laravel على Render، وليست عبر Supabase هنا. أضِف VITE_SUPABASE_URL و VITE_SUPABASE_ANON_KEY على Netlify فقط إن أردت اتصالاً مباشراً من المتصفح.',
         };
     }
     try {
