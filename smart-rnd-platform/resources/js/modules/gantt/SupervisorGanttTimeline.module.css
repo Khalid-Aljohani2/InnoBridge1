@@ -1,0 +1,74 @@
+.ganttWrap {
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+:global(.dark) .ganttWrap {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(71, 85, 105, 0.8);
+}
+
+.ruler {
+    display: flex;
+    height: 2.25rem;
+    align-items: center;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #475569;
+    padding: 0 0.5rem;
+    gap: 0.25rem;
+    min-width: max(100%, 720px);
+}
+
+.tick {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: minmax(180px, 240px) 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    min-width: max(100%, 720px);
+}
+
+.meta {
+    font-size: 0.75rem;
+    line-height: 1.25;
+    color: #334155;
+}
+
+.metaTitle {
+    font-weight: 800;
+    color: #0b2447;
+}
+
+.track {
+    position: relative;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    background: rgba(226, 232, 240, 0.65);
+}
+
+.bar {
+    position: absolute;
+    top: 0.25rem;
+    height: 1.25rem;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg, #19a7ce, #10b981);
+    box-shadow: 0 2px 8px rgba(11, 36, 71, 0.15);
+}
+
+.empty {
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}

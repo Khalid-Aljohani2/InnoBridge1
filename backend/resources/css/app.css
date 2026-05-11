@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --sr-primary: 11 36 71;
+        --sr-accent: 25 167 206;
+        --sr-secondary: 16 185 129;
+        --sr-danger: 220 38 38;
+    }
+
+    body {
+        font-family: 'Inter', 'Cairo', sans-serif;
+        @apply bg-slate-50 text-slate-900;
+    }
+
+    html.dark body {
+        @apply bg-slate-950 text-slate-100;
+    }
+
+    html.dark {
+        color-scheme: dark;
+    }
+
+    [dir='rtl'] {
+        font-family: 'Cairo', 'Inter', sans-serif;
+    }
+
+    input:not([type='checkbox']):not([type='radio']):not([type='file']),
+    select,
+    textarea {
+        @apply rounded-xl border border-slate-300 bg-white px-3 text-sm text-gray-900 shadow-sm transition;
+        @apply focus:border-[#19A7CE] focus:ring-2 focus:ring-[#19A7CE]/25;
+    }
+
+    .dark input:not([type='checkbox']):not([type='radio']):not([type='file']),
+    .dark select,
+    .dark textarea {
+        /* Important: overrides @tailwindcss/forms preflight conflicts in dark theme */
+        @apply !border-slate-600 !bg-slate-950 !text-slate-50;
+    }
+
+    .dark input::placeholder,
+    .dark textarea::placeholder {
+        @apply !text-slate-400;
+    }
+
+    input:not([type='checkbox']):not([type='radio']):not([type='file']),
+    select {
+        @apply h-11;
+    }
+
+    textarea {
+        @apply py-2 min-h-[96px];
+    }
+
+    input:disabled,
+    select:disabled,
+    textarea:disabled {
+        @apply opacity-70 cursor-not-allowed;
+    }
+}
+
+@layer components {
+    .sr-surface {
+        @apply rounded-2xl border shadow-sm transition-all;
+    }
+
+    .sr-surface-light {
+        @apply sr-surface bg-white border-slate-200;
+    }
+
+    .sr-surface-dark {
+        @apply sr-surface bg-slate-900 border-slate-700;
+    }
+
+    .sr-page-shell {
+        @apply max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-5;
+    }
+
+    .sr-app-bg {
+        @apply bg-slate-50;
+        background-image:
+            radial-gradient(circle at 15% 10%, rgba(11, 36, 71, 0.09), transparent 28%),
+            radial-gradient(circle at 85% 5%, rgba(25, 167, 206, 0.12), transparent 22%);
+    }
+
+    .sr-app-bg-dark {
+        @apply bg-slate-950;
+        background-image:
+            radial-gradient(circle at 15% 10%, rgba(25, 167, 206, 0.14), transparent 28%),
+            radial-gradient(circle at 85% 5%, rgba(16, 185, 129, 0.1), transparent 22%);
+    }
+
+    .sr-title {
+        @apply text-lg font-bold;
+    }
+
+    .sr-subtitle {
+        @apply text-lg md:text-xl font-bold tracking-tight;
+    }
+
+    .sr-section-title {
+        @apply text-xl md:text-2xl font-black tracking-tight;
+    }
+
+    .sr-muted {
+        @apply text-sm text-slate-500;
+    }
+
+    .dark .sr-muted {
+        @apply text-slate-400;
+    }
+
+    .sr-section-stack {
+        @apply space-y-5 md:space-y-6;
+    }
+
+    /**
+     * Dark surfaces while global theme toggle is still «light» (e.g. industry routes force dark chrome,
+     * so html.dark may be absent — base form styles otherwise stay bright white).
+     */
+    .sr-panel-dark-shell {
+        color: rgb(241 245 249);
+        color-scheme: dark;
+    }
+
+    .sr-panel-dark-shell input:not([type='checkbox']):not([type='radio']):not([type='file']),
+    .sr-panel-dark-shell select,
+    .sr-panel-dark-shell textarea {
+        @apply !rounded-xl !border !border-slate-600 !bg-slate-950/90 !text-sm !text-slate-50 !shadow-sm !transition;
+    }
+
+    .sr-panel-dark-shell input:not([type='checkbox']):not([type='radio']):not([type='file']),
+    .sr-panel-dark-shell select {
+        @apply !h-11;
+    }
+
+    .sr-panel-dark-shell textarea {
+        @apply !min-h-[96px] !py-2;
+    }
+
+    .sr-panel-dark-shell input::placeholder,
+    .sr-panel-dark-shell textarea::placeholder {
+        @apply !text-slate-400;
+    }
+
+    .sr-alert-success {
+        @apply rounded-xl border px-4 py-3 text-sm font-semibold;
+        @apply border-emerald-300/70 bg-emerald-50 text-emerald-950;
+    }
+
+    .dark .sr-alert-success,
+    .sr-panel-dark-shell .sr-alert-success {
+        @apply border-emerald-500/35 bg-emerald-950/50 text-emerald-100;
+    }
+
+    .sr-alert-error {
+        @apply rounded-xl border px-4 py-3 text-sm font-semibold;
+        @apply border-red-300/80 bg-red-50 text-red-950;
+    }
+
+    .dark .sr-alert-error,
+    .sr-panel-dark-shell .sr-alert-error {
+        @apply border-red-500/40 bg-red-950/40 text-red-100;
+    }
+
+    .sr-btn-primary {
+        @apply rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition;
+    }
+
+    .sr-btn-danger {
+        @apply rounded-xl bg-red-600 text-white font-semibold hover:bg-red-700 transition;
+    }
+
+    .sr-btn-action {
+        @apply inline-flex w-full items-center justify-center rounded-xl px-4 h-11 md:h-12 text-sm font-bold transition whitespace-nowrap;
+        @apply active:scale-[0.99];
+    }
+
+    .sr-btn-action-primary {
+        @apply sr-btn-action text-white shadow-sm;
+        background-image: linear-gradient(135deg, #0b2447 0%, #19a7ce 55%, #10b981 100%);
+        box-shadow: 0 8px 20px -12px rgba(11, 36, 71, 0.6);
+    }
+
+    .sr-btn-action-primary:hover {
+        filter: brightness(1.04);
+        box-shadow: 0 12px 24px -14px rgba(25, 167, 206, 0.55);
+    }
+
+    /** Industry / InnoBridge: deep olive → bright lime (Arabic dashboards reference) */
+    .sr-sidebar-link-active-brand {
+        background-image: linear-gradient(90deg, #004d40 0%, #087f59 52%, #4ade80 100%);
+        box-shadow: 0 14px 40px -18px rgba(0, 77, 64, 0.65), 0 8px 22px -12px rgba(74, 222, 128, 0.35);
+    }
+
+    .sr-btn-industry-gradient {
+        @apply sr-btn-action text-white font-extrabold;
+        border-radius: 17px;
+        background-image: linear-gradient(to right, #004d40, #15803d 50%, #22c55e);
+        box-shadow: 0 14px 38px -16px rgba(0, 77, 64, 0.6), 0 10px 28px -14px rgba(34, 197, 94, 0.28);
+    }
+
+    .sr-btn-industry-gradient:hover {
+        filter: brightness(1.04);
+        box-shadow: 0 18px 44px -18px rgba(34, 197, 94, 0.5), 0 12px 32px -14px rgba(118, 255, 3, 0.3);
+    }
+
+    .sr-btn-industry-gradient-reverse {
+        @apply sr-btn-action text-white font-extrabold;
+        border-radius: 17px;
+        background-image: linear-gradient(to right, #22c55e, #15803d 55%, #004d40);
+        box-shadow: 0 14px 38px -16px rgba(34, 197, 94, 0.35), 0 10px 28px -14px rgba(0, 77, 64, 0.45);
+    }
+
+    .sr-btn-industry-gradient-reverse:hover {
+        filter: brightness(1.03);
+    }
+
+    .sr-btn-action-secondary {
+        @apply sr-btn-action text-white shadow-sm;
+        background-image: linear-gradient(135deg, rgb(var(--sr-secondary)) 0%, rgb(var(--sr-primary)) 100%);
+        box-shadow: 0 8px 20px -12px rgb(var(--sr-secondary));
+    }
+
+    .sr-btn-action-secondary:hover {
+        filter: brightness(1.03);
+    }
+
+    .sr-btn-action-danger {
+        @apply sr-btn-action text-white;
+        background-color: rgb(var(--sr-danger));
+        box-shadow: 0 8px 20px -12px rgb(var(--sr-danger));
+    }
+
+    .sr-btn-action-danger:hover {
+        background-color: rgb(185 28 28);
+    }
+
+    .sr-btn-action-neutral {
+        @apply sr-btn-action bg-slate-200 text-slate-800 hover:bg-slate-300;
+    }
+
+    .sr-field {
+        @apply w-full rounded-xl border border-slate-300 px-3 h-11 text-sm shadow-sm transition;
+        @apply focus:border-blue-500 focus:ring-2 focus:ring-blue-200;
+    }
+
+    .sr-field-dark {
+        @apply sr-field bg-slate-800 border-slate-600 text-slate-100 placeholder:text-slate-400;
+    }
+
+    .sr-field-light {
+        @apply sr-field bg-white border-slate-300 text-slate-800;
+    }
+
+    .sr-card {
+        @apply rounded-2xl border shadow-sm transition;
+        box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 8px 24px -20px rgba(15, 23, 42, 0.35);
+    }
+
+    .sr-card-light {
+        @apply sr-card bg-white border-slate-200;
+    }
+
+    .sr-card-dark {
+        @apply sr-card bg-slate-900 border-slate-700;
+    }
+
+    .sr-card-hover {
+        @apply hover:-translate-y-0.5 hover:shadow-lg;
+    }
+
+    .sr-stat-card {
+        @apply rounded-2xl border p-5 shadow-sm transition;
+    }
+
+    .sr-stat-value {
+        @apply text-2xl md:text-3xl font-black tracking-tight;
+    }
+
+    .sr-empty {
+        @apply rounded-2xl border border-dashed p-8 text-center text-sm;
+    }
+
+    .sr-card-subtle-light {
+        @apply rounded-xl border border-slate-200 bg-slate-50;
+    }
+
+    .sr-card-subtle-dark {
+        @apply rounded-xl border border-slate-700 bg-slate-800;
+    }
+
+    .sr-table-head {
+        @apply text-[11px] md:text-xs font-bold uppercase tracking-wide;
+    }
+
+    .sr-table-row {
+        @apply rounded-xl border;
+    }
+
+    .sr-table-row-hover {
+        @apply hover:shadow-md hover:-translate-y-0.5;
+    }
+
+    .sr-focus {
+        @apply focus:outline-none focus:ring-2 focus:ring-offset-1;
+        --tw-ring-color: rgb(var(--sr-accent) / 0.35);
+    }
+
+    .sr-loading {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sr-loading::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.25) 50%, transparent 80%);
+        transform: translateX(-120%);
+        animation: srShine 1.3s infinite;
+    }
+
+    .sr-chip {
+        @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold border;
+    }
+
+    .sr-chip-emerald {
+        @apply sr-chip bg-emerald-50 text-emerald-700 border-emerald-100;
+    }
+
+    .sr-chip-red {
+        @apply sr-chip bg-red-50 text-red-700 border-red-100;
+    }
+
+    .sr-chip-amber {
+        @apply sr-chip bg-amber-50 text-amber-700 border-amber-100;
+    }
+
+    .sr-chip-blue {
+        @apply sr-chip bg-blue-50 text-blue-700 border-blue-100;
+    }
+
+    /* Thin scrollbars aligned with app surfaces (no OS arrow buttons in WebKit) */
+    .sr-scroll-area {
+        scrollbar-width: thin;
+    }
+
+    .sr-scroll-area-dark {
+        scrollbar-color: rgb(71 85 105) rgb(15 23 42 / 0.55);
+    }
+
+    .sr-scroll-area-dark::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .sr-scroll-area-dark::-webkit-scrollbar-track {
+        background: rgb(15 23 42 / 0.55);
+        border-radius: 9999px;
+    }
+
+    .sr-scroll-area-dark::-webkit-scrollbar-thumb {
+        background: rgb(71 85 105);
+        border-radius: 9999px;
+    }
+
+    .sr-scroll-area-dark::-webkit-scrollbar-thumb:hover {
+        background: rgb(100 116 139);
+    }
+
+    .sr-scroll-area-dark::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    .sr-scroll-area-light {
+        scrollbar-color: rgb(203 213 225) rgb(241 245 249);
+    }
+
+    .sr-scroll-area-light::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .sr-scroll-area-light::-webkit-scrollbar-track {
+        background: rgb(241 245 249);
+        border-radius: 9999px;
+    }
+
+    .sr-scroll-area-light::-webkit-scrollbar-thumb {
+        background: rgb(203 213 225);
+        border-radius: 9999px;
+    }
+
+    .sr-scroll-area-light::-webkit-scrollbar-thumb:hover {
+        background: rgb(148 163 184);
+    }
+
+    .sr-scroll-area-light::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    /** Industry workflow aliases (Arabic dashboards / شركة) */
+    .industry-dark-shell {
+        min-height: 100vh;
+    }
+
+    .btn-gradient {
+        @apply sr-btn-industry-gradient;
+    }
+
+    .custom-card {
+        @apply rounded-[20px] border border-emerald-500/30 bg-slate-900/80;
+        box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.45),
+            0 24px 56px -28px rgba(0, 77, 64, 0.55),
+            0 14px 40px -26px rgba(34, 197, 94, 0.18);
+    }
+}
+
+@keyframes srModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes srShine {
+    to {
+        transform: translateX(120%);
+    }
+}
