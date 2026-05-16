@@ -104,7 +104,7 @@ export default function Workspace({ team = null, milestones = [] }) {
         );
     }
 
-    if (!team.project || !team.project.industry_challenge_id) {
+    if (!team || !team.project) {
         return (
             <AuthenticatedLayout header={<h2 className={`font-semibold text-xl ${isDark ? 'text-slate-100' : 'text-gray-800'}`}>{t.title}</h2>}>
                 <Head title={t.title} />
