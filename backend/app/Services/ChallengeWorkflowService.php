@@ -359,6 +359,7 @@ class ChallengeWorkflowService
 
             $team->update([
                 'industry_project_id' => $project->id,
+                'project_id' => $project->id,
             ]);
 
             return ['ok' => true, 'message' => 'Challenge assigned'];
@@ -589,6 +590,7 @@ class ChallengeWorkflowService
 
             $team->update([
                 'industry_project_id' => $project->id,
+                'project_id' => $project->id,
             ]);
 
             $req->update([

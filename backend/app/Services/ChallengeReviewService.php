@@ -1,15 +1,18 @@
 <?php
 
 namespace App\Services;
-
+ 
 use App\Models\IndustryChallenge;
-
+use App\Models\Project;
+use App\Models\Team;
+use App\Models\TeamMember;
+ 
 class ChallengeReviewService
 {
     public function __construct(
         private readonly ChallengeHistoryService $challengeHistoryService,
     ) {}
-
+ 
     /**
      * Apply supervisor decision and persist challenge state/history atomically in workflow terms.
      */
@@ -24,13 +27,32 @@ class ChallengeReviewService
                 'Company/industry challenges must be approved by HoD and are not modified via supervisor idea review.'
             );
         }
-
+ 
         if ($decision === 'approve') {
             $challenge->update([
                 'progress' => $selectedMilestone['progress'],
                 'current_milestone' => "مقبول من المشرف - {$selectedMilestone['label']} ({$selectedMilestone['progress']}%)",
                 'review_status' => 'approved',
             ]);
+ 
+            // Sync with the actual team project to ensure it shows up in Workspace
+            $studentId = $challenge->posted_by_user_id;
+            $teamMember = TeamMember::where('user_id', $studentId)->first();
+            if ($teamMember) {
+                $team = Team::find($teamMember->team_id);
+                if ($team && $team->project_id) {
+                    $project = Project::find($team->project_id);
+                    if ($project) {
+                        $project->update([
+                            'title' => $challenge->title,
+                            'abstract' => $challenge->description,
+                            'status' => 'approved',
+                            'industry_challenge_id' => $challenge->id,
+                        ]);
+                    }
+                }
+            }
+ 
             $this->challengeHistoryService->record(
                 $challenge,
                 'supervisor_approved',
