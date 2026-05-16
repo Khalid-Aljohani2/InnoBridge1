@@ -48,7 +48,7 @@ class SupervisorProjectService
         $teams = $query->get();
 
         $plansQuery = SupervisorMilestonePlan::query()
-            ->where('is_active', true)
+            ->where('is_active', 'true')
             ->latest('id');
         if ($user->role === 'supervisor') {
             $plansQuery->where('supervisor_id', $user->id);

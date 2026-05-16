@@ -117,14 +117,14 @@ class NotificationFeedService
         if (CachedSchema::hasTable('group_chat_notifications') && in_array(($user->role ?? null), ['student', 'supervisor', 'admin', 'hod'], true)) {
             GroupChatNotification::query()
                 ->where('user_id', $user->id)
-                ->where('is_read', false)
+                ->where('is_read', 'false')
                 ->update(['is_read' => true]);
         }
 
         if (($user->role ?? null) === 'student') {
             StudentNotification::query()
                 ->where('student_id', $user->id)
-                ->where('is_read', false)
+                ->where('is_read', 'false')
                 ->update(['is_read' => true]);
 
             if (CachedSchema::hasColumn('team_invitations', 'seen_at')) {
@@ -479,7 +479,7 @@ class NotificationFeedService
         $n = 0;
 
         if ($role === 'student') {
-            $n += StudentNotification::query()->where('student_id', $user->id)->where('is_read', false)->count();
+            $n += StudentNotification::query()->where('student_id', $user->id)->where('is_read', 'false')->count();
             if (CachedSchema::hasColumn('team_invitations', 'seen_at')) {
                 $n += TeamInvitation::query()
                     ->where('invited_user_id', $user->id)
@@ -561,7 +561,7 @@ class NotificationFeedService
             if (CachedSchema::hasTable('faculty_notifications')) {
                 $n += FacultyNotification::query()
                     ->where('recipient_user_id', $user->id)
-                    ->where('is_read', false)
+                    ->where('is_read', 'false')
                     ->count();
             }
         }
@@ -592,7 +592,7 @@ class NotificationFeedService
             // were loaded, so an older unread message could be missing from the list while still counted.
             $unreadGc = GroupChatNotification::with(['sender:id,name', 'group:id,name'])
                 ->where('user_id', $user->id)
-                ->where('is_read', false)
+                ->where('is_read', 'false')
                 ->latest('id')
                 ->limit(100)
                 ->get();
@@ -602,7 +602,7 @@ class NotificationFeedService
 
             $readGcQuery = GroupChatNotification::with(['sender:id,name', 'group:id,name'])
                 ->where('user_id', $user->id)
-                ->where('is_read', true)
+                ->where('is_read', 'true')
                 ->latest('id');
 
             if ($unreadIds !== []) {

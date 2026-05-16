@@ -757,7 +757,7 @@ class ChallengeWorkflowService
 
         return User::query()
             ->where('role', 'hod')
-            ->where('is_active', true)
+            ->where('is_active', 'true')
             ->pluck('id')
             ->map(fn ($id) => (int) $id)
             ->values()

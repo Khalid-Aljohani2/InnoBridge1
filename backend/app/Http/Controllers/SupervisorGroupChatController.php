@@ -141,7 +141,7 @@ class SupervisorGroupChatController extends Controller
         GroupChatNotification::query()
             ->where('user_id', auth()->id())
             ->where('supervisor_group_id', $group->id)
-            ->where('is_read', false)
+            ->where('is_read', 'false')
             ->update(['is_read' => true]);
 
         $group->load(['members.student:id,name', 'supervisor:id,name', 'admins.user:id,name']);

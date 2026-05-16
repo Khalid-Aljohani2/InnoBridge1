@@ -452,7 +452,7 @@ class MilestonePlanService
 
         $groupPlanId = SupervisorMilestonePlan::where('supervisor_id', $user->id)
             ->where('supervisor_group_id', $groupId)
-            ->where('is_active', true)
+            ->where('is_active', 'true')
             ->latest('id')
             ->value('id');
         if ($groupPlanId) {
@@ -461,7 +461,7 @@ class MilestonePlanService
 
         $globalPlanId = SupervisorMilestonePlan::where('supervisor_id', $user->id)
             ->whereNull('supervisor_group_id')
-            ->where('is_active', true)
+            ->where('is_active', 'true')
             ->latest('id')
             ->value('id');
         if ($globalPlanId) {

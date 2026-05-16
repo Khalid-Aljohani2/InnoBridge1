@@ -577,7 +577,7 @@ class ChallengeQueryService
         $plansQuery = SupervisorMilestonePlan::query()
             ->select('id', 'name', 'supervisor_group_id')
             ->with('group:id,name')
-            ->where('is_active', true)
+            ->where('is_active', 'true')
             ->latest('id');
         if ($user->role === 'supervisor') {
             $plansQuery->where('supervisor_id', $user->id);

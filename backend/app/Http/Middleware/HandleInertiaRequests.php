@@ -82,6 +82,7 @@ class HandleInertiaRequests extends Middleware
 
                 if ($canScopeByStudentIdea) {
                     $counts = IndustryChallenge::query()
+                        ->where('is_active', 'true')
                         ->where('kind', 'student_idea')
                         ->whereIn('review_status', ['pending_action', 'awaiting_revision'])
                         ->groupBy('review_status')
@@ -190,7 +191,7 @@ class HandleInertiaRequests extends Middleware
     {
         $gc = 0;
         if (CachedSchema::hasTable('group_chat_notifications') && in_array(($user->role ?? null), ['student', 'supervisor', 'admin', 'hod'], true)) {
-            $gc = (int) GroupChatNotification::where('user_id', $user->id)->where('is_read', false)->count();
+            $gc = (int) GroupChatNotification::where('user_id', $user->id)->where('is_read', 'false')->count();
         }
 
         $feed = 0;

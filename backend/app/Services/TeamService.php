@@ -40,7 +40,7 @@ class TeamService
             $availableTeams = Team::query()
                 ->withCount('members')
                 ->with(['leader:id,name', 'supervisor:id,name'])
-                ->where('is_active', true)
+                ->where('is_active', 'true')
                 ->where('review_status', 'approved')
                 ->orderByDesc('id')
                 ->limit(200)
