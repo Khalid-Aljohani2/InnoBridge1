@@ -201,13 +201,13 @@ Route::middleware('auth')->group(function () {
         ->middleware(['role:hod,admin'])
         ->name('hod.panel');
     Route::get('/hod/industry-challenges', [PortalController::class, 'hodIndustryChallenges'])
-        ->middleware(['role:hod,supervisor,admin'])
+        ->middleware(['role:hod,admin'])
         ->name('hod.industry-challenges');
     Route::patch('/hod/industry-challenges/{industryChallenge}/publish-for-students', [PortalController::class, 'hodPublishIndustryChallengeForStudents'])
         ->middleware(['role:hod,admin'])
         ->name('hod.industry-challenges.publish');
     Route::patch('/hod/industry-challenges/{industryChallenge}/review', [PortalController::class, 'hodReviewIndustryChallenge'])
-        ->middleware(['role:supervisor,admin'])
+        ->middleware(['role:hod,admin'])
         ->name('hod.industry-challenges.review');
     Route::get('/hod/industry-nominations', [PortalController::class, 'hodIndustryNominations'])
         ->middleware(['role:hod,admin'])
