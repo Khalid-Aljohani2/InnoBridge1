@@ -28,15 +28,30 @@ class PortalController extends Controller
         return $this->groupManagementService->hodMayAccessTeamModel($user, $team);
     }
 
-    public function studentIndustryChallenges()
+    public function studentIndustryChallenges(Request $request)
     {
+        $user = $request->user();
+        $teamMember = \App\Models\TeamMember::where('user_id', $user->id)->with('team')->first();
+        $hasApprovedSupervisor = $teamMember && $teamMember->team && !empty($teamMember->team->supervisor_id) && $teamMember->team->review_status === 'approved';
+
         return Inertia::render('Student/IndustryChallenges', [
-            'challenges' => $this->challengeWorkflowService->queryCompanyChallengesApproved()->get(),
+            'challenges' => $hasApprovedSupervisor ? $this->challengeWorkflowService->queryCompanyChallengesApproved()->get() : [],
+            'has_supervisor' => $hasApprovedSupervisor,
         ]);
     }
 
     public function studentRequestChallenge(Request $request)
     {
+        $user = $request->user();
+        if ($user->role !== 'student') {
+            abort(403);
+        }
+
+        $teamMember = \App\Models\TeamMember::where('user_id', $user->id)->with('team')->first();
+        if (!$teamMember || !$teamMember->team || empty($teamMember->team->supervisor_id) || $teamMember->team->review_status !== 'approved') {
+            abort(403, 'You must be in an approved team with an assigned supervisor to request an industry challenge.');
+        }
+
         $request->validate([
             'industry_challenge_id' => 'required|integer|exists:industry_challenges,id',
         ]);

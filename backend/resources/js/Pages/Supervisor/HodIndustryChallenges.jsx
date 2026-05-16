@@ -14,7 +14,7 @@ export default function HodIndustryChallenges({ pendingCompanyChallenges = [], a
                 ? {
                       title: 'مراجعة تحديات الصناعة',
                       desc: 'اقبل أو ارفض طلب الشركة أولاً. بعد القبول، اضغط «عرض للطلاب» عند الجاهزية — حتى ذلك الحين لا يظهر التحدي في قائمة الطلاب.',
-                      pendingTitle: userRole === 'supervisor' ? 'بانتظار قرارك (قبول / رفض)' : 'تم قبولها من قبل مشرفي الطلاب (للاطلاع)',
+                      pendingTitle: 'بانتظار قرارك (قبول / رفض)',
                       awaitingTitle: 'مقبولة — بانتظار العرض للطلاب',
                       company: 'جهة الصناعة',
                       approveChallenge: 'قبول الطلب',
@@ -27,7 +27,7 @@ export default function HodIndustryChallenges({ pendingCompanyChallenges = [], a
                 : {
                       title: 'Industry challenge review',
                       desc: 'Accept or reject the company submission first. After acceptance, click “Show to students” when ready — until then students will not see the challenge.',
-                      pendingTitle: userRole === 'supervisor' ? 'Awaiting your decision (accept / reject)' : 'Accepted by supervisors (View Mode)',
+                      pendingTitle: 'Awaiting your decision (accept / reject)',
                       awaitingTitle: 'Accepted — awaiting publication to students',
                       company: 'Posted by',
                       approveChallenge: 'Accept request',
@@ -80,7 +80,7 @@ export default function HodIndustryChallenges({ pendingCompanyChallenges = [], a
                             </div>
                             <div className="flex w-full min-w-[260px] max-w-lg flex-col gap-2">
                                 {variant === 'pending' ? (
-                                    userRole === 'supervisor' || userRole === 'admin' ? (
+                                    userRole === 'hod' || userRole === 'admin' ? (
                                         <>
                                             <textarea
                                                 value={industryNotesById[c.id] || ''}
