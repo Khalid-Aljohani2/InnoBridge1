@@ -342,7 +342,7 @@ export default function Workspace({ team = null, milestones = [], isPendingRevie
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </AuthenticatedLayout>
