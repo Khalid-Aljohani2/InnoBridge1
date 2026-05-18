@@ -24,6 +24,10 @@ class Team extends Model
         'reviewed_at',
     ];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     // العلاقة: قائد الفريق (طالب)
     public function leader()
     {

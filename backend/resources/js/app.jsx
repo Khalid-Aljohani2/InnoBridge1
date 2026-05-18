@@ -22,7 +22,6 @@ createInertiaApp({
             </I18nextProvider>,
         );
     },
-    // شريط التقدم العلوي يظهر خلال زيارة Inertia إلى الخادم؛ delay يخفّف الوميض في التنقّلات السريعة فقط.
     progress: {
         color: '#19A7CE',
         delay: 250,

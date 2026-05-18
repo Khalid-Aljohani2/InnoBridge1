@@ -31,7 +31,7 @@ const content = {
             'منصة واحدة تجمع طرفي المعادلة — تحديات من القطاع وحلول من العقول الأكاديمية — لتسريع الابتكار الملموس.',
         students: 'الطلاب والمبتكرون',
         studentsDesc: 'انطلقوا من مشكلة حقيقية، وقدّموا حلولا ذكية تُقاس بأثرها.',
-        instructors: 'الأكاديميون',
+        instructors: 'الأكاديميين',
         instructorsDesc: 'أشرفوا، وَوجّهوا، واختزلوا مسافة الشركات بالطاقات البحثية لديكم.',
         industry: 'الشركات والقطاع الخاص',
         industryDesc: 'اطرحوا تحدياتكم، واحصلوا على حلول مبتكرة من فرق أكاديمية منظّمة.',
@@ -167,9 +167,8 @@ export default function Welcome({ auth }) {
 
             <div
                 dir={isArabic ? 'rtl' : 'ltr'}
-                className={`relative flex min-h-screen flex-col overflow-hidden transition-all duration-500 ${
-                    isDark ? 'sr-app-bg-dark' : 'sr-app-bg'
-                }`}
+                className={`relative flex min-h-screen flex-col overflow-hidden transition-all duration-500 ${isDark ? 'sr-app-bg-dark' : 'sr-app-bg'
+                    }`}
             >
                 <AuroraBackground isDark={isDark} />
 
@@ -181,14 +180,12 @@ export default function Welcome({ auth }) {
                             <div className="relative z-10 mx-auto mt-6 w-full max-w-6xl flex-1">
                                 <div
                                     id="platform-intro"
-                                    className={`rounded-3xl border p-8 shadow-2xl backdrop-blur-xl transition md:p-12 ${
-                                        isDark ? 'border-slate-700 bg-slate-900/80' : 'border-white/80 bg-white/90'
-                                    }`}
+                                    className={`rounded-3xl border p-8 shadow-2xl backdrop-blur-xl transition md:p-12 ${isDark ? 'border-slate-700 bg-slate-900/80' : 'border-white/80 bg-white/90'
+                                        }`}
                                 >
                                     <p
-                                        className={`mb-5 inline-flex flex-wrap items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold shadow-sm ${
-                                            isDark ? 'border-[#19A7CE]/40 bg-[#0B2447]/40 text-slate-100' : 'border-[#19A7CE]/30 bg-[#19A7CE]/10 text-[#0B2447]'
-                                        }`}
+                                        className={`mb-5 inline-flex flex-wrap items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold shadow-sm ${isDark ? 'border-[#19A7CE]/40 bg-[#0B2447]/40 text-slate-100' : 'border-[#19A7CE]/30 bg-[#19A7CE]/10 text-[#0B2447]'
+                                            }`}
                                     >
                                         <span>{isArabic ? 'جسر الابتكار' : 'InnoBridge'}</span>
                                         <span className={isDark ? 'text-slate-500' : 'text-slate-400'}>|</span>
@@ -246,9 +243,8 @@ export default function Welcome({ auth }) {
                             <>
                                 <div className="relative z-10 mx-auto mb-14 max-w-4xl px-2 text-center">
                                     <p
-                                        className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1 text-sm font-bold shadow-sm ${
-                                            isDark ? 'border-[#19A7CE]/40 bg-[#0B2447]/40 text-slate-100' : 'border-slate-200 bg-white/95 text-[#0B2447]'
-                                        }`}
+                                        className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1 text-sm font-bold shadow-sm ${isDark ? 'border-[#19A7CE]/40 bg-[#0B2447]/40 text-slate-100' : 'border-slate-200 bg-white/95 text-[#0B2447]'
+                                            }`}
                                     >
                                         <span className="text-[#19A7CE]">{t.ecosystemBadge}</span>
                                         <span className="opacity-50">·</span>
@@ -300,9 +296,8 @@ export default function Welcome({ auth }) {
                                                     <div
                                                         key={role.id}
                                                         id={role.anchorId}
-                                                        className={`flex scroll-mt-36 flex-col items-center rounded-3xl border px-8 pb-10 pt-10 text-center shadow-sm backdrop-blur transition md:pb-12 ${
-                                                            isDark ? 'border-slate-700 bg-slate-900/80 shadow-lg' : 'border-gray-100 bg-white/92 sr-card-hover'
-                                                        }`}
+                                                        className={`flex scroll-mt-36 flex-col items-center rounded-3xl border px-8 pb-10 pt-10 text-center shadow-sm backdrop-blur transition md:pb-12 ${isDark ? 'border-slate-700 bg-slate-900/80 shadow-lg' : 'border-gray-100 bg-white/92 sr-card-hover'
+                                                            }`}
                                                     >
                                                         <div
                                                             className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${role.iconWrap} text-white shadow-lg`}
@@ -318,11 +313,10 @@ export default function Welcome({ auth }) {
                                                             {role.id === 'students' ? (
                                                                 <Link
                                                                     href="/register"
-                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${
-                                                                        isDark
-                                                                            ? 'border border-emerald-500/50 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-900/50'
-                                                                            : 'border border-emerald-200 bg-emerald-50 text-emerald-900 hover:bg-emerald-100'
-                                                                    }`}
+                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${isDark
+                                                                        ? 'border border-emerald-500/50 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-900/50'
+                                                                        : 'border border-emerald-200 bg-emerald-50 text-emerald-900 hover:bg-emerald-100'
+                                                                        }`}
                                                                 >
                                                                     {t.registerStudent}
                                                                 </Link>
@@ -330,11 +324,10 @@ export default function Welcome({ auth }) {
                                                             {role.id === 'supervisor' ? (
                                                                 <Link
                                                                     href="/register?role=faculty"
-                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${
-                                                                        isDark
-                                                                            ? 'border border-sky-500/50 bg-sky-950/40 text-sky-100 hover:bg-sky-900/40'
-                                                                            : 'border border-sky-200 bg-sky-50 text-sky-900 hover:bg-sky-100'
-                                                                    }`}
+                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${isDark
+                                                                        ? 'border border-sky-500/50 bg-sky-950/40 text-sky-100 hover:bg-sky-900/40'
+                                                                        : 'border border-sky-200 bg-sky-50 text-sky-900 hover:bg-sky-100'
+                                                                        }`}
                                                                 >
                                                                     {t.registerFaculty}
                                                                 </Link>
@@ -342,11 +335,10 @@ export default function Welcome({ auth }) {
                                                             {role.id === 'industry' ? (
                                                                 <Link
                                                                     href={route('register.industry')}
-                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${
-                                                                        isDark
-                                                                            ? 'border border-violet-500/50 bg-violet-950/45 text-violet-100 hover:bg-violet-900/40'
-                                                                            : 'border border-violet-200 bg-violet-50 text-violet-900 hover:bg-violet-100'
-                                                                    }`}
+                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${isDark
+                                                                        ? 'border border-violet-500/50 bg-violet-950/45 text-violet-100 hover:bg-violet-900/40'
+                                                                        : 'border border-violet-200 bg-violet-50 text-violet-900 hover:bg-violet-100'
+                                                                        }`}
                                                                 >
                                                                     {t.registerCompany}
                                                                 </Link>
@@ -361,11 +353,10 @@ export default function Welcome({ auth }) {
                                             <Link
                                                 href={route('login')}
                                                 aria-label={isArabic ? 'تسجيل الدخول الموحد' : 'Unified sign in'}
-                                                className={`inline-flex min-w-[14rem] items-center justify-center rounded-2xl px-10 py-4 text-lg font-black shadow-xl transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400/60 ${
-                                                    isDark
-                                                        ? 'bg-gradient-to-r from-emerald-500 to-[#19A7CE] text-emerald-950'
-                                                        : 'bg-gradient-to-r from-[#0B2447] via-[#19A7CE] to-emerald-500 text-white'
-                                                }`}
+                                                className={`inline-flex min-w-[14rem] items-center justify-center rounded-2xl px-10 py-4 text-lg font-black shadow-xl transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400/60 ${isDark
+                                                    ? 'bg-gradient-to-r from-emerald-500 to-[#19A7CE] text-emerald-950'
+                                                    : 'bg-gradient-to-r from-[#0B2447] via-[#19A7CE] to-emerald-500 text-white'
+                                                    }`}
                                             >
                                                 {t.joinUs}
                                             </Link>

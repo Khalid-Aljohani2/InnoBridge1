@@ -52,16 +52,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // 1. التحقق من المدخلات
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // 2. البحث عن المستخدم بالبريد الإلكتروني
         $user = User::where('email', $request->email)->first();
 
-        // 3. التحقق من كلمة المرور (ملاحظة: Laravel يتوقعها مشفرة بـ Hash)
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'status' => 'error',
@@ -69,7 +66,6 @@ class AuthController extends Controller
             ], 401);
         }
 
-        // 4. إنشاء Token للمستخدم (باستخدام Sanctum)
         $abilities = $this->abilitiesForRole($user->role);
         $token = $user->createToken('auth_token', $abilities)->plainTextToken;
 

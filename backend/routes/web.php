@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\AdminOverviewController;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\ImpersonationController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ChallengeController; // <--- أضف هذا السطر ضروري جداً
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\Modules\Faculty\FacultyReportsWebController;
 use App\Http\Controllers\Modules\Faculty\SupervisorProjectTimelineWebController;
 use App\Http\Controllers\PreferenceController;
@@ -29,7 +29,6 @@ Route::get('/', function () {
     ]);
 });
 
-// التعديل هنا: جعل الرابط يذهب للكنترولر لجلب البيانات
 Route::get('/dashboard', [ChallengeController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

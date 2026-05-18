@@ -15,6 +15,10 @@ class StudentNotification extends Model
         'sent_at',
     ];
 
+    protected $casts = [
+        'is_read' => 'boolean',
+    ];
+
     public function supervisor()
     {
         return $this->belongsTo(User::class, 'supervisor_id');

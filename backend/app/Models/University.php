@@ -9,6 +9,10 @@ class University extends Model
     // الحقول المسموح بإدخال بيانات فيها
     protected $fillable = ['name', 'email_domain', 'is_active'];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     // العلاقة: الجامعة الواحدة لديها العديد من المستخدمين
     public function users()
     {

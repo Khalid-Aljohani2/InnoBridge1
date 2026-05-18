@@ -26,61 +26,61 @@ export default function Register({ registrationPreset = 'student' }) {
         registrationPreset === 'industry'
             ? route('login', { role: 'industry' })
             : registrationPreset === 'student'
-              ? route('login', { role: 'student' })
-              : route('login');
+                ? route('login', { role: 'student' })
+                : route('login');
 
     const t = isArabic
         ? {
-              headTitle: isFaculty
-                  ? 'إنشاء حساب أكاديمي'
-                  : isIndustry
+            headTitle: isFaculty
+                ? 'إنشاء حساب أكاديمي'
+                : isIndustry
                     ? 'إنشاء حساب جهة صناعية'
                     : 'إنشاء حساب طالب',
-              title: 'إنشاء حساب',
-              subtitle: isFaculty
-                  ? 'أكمل بياناتك وحدّد دورك ضمن المنصة.'
-                  : isIndustry
+            title: 'إنشاء حساب',
+            subtitle: isFaculty
+                ? 'أكمل بياناتك وحدّد دورك ضمن المنصة.'
+                : isIndustry
                     ? 'تمثّل جهتك لنشر التحديات ومتابعة الطلاب والمشرفين. تأكد أنك تبدأ من بطاقة «جهة الصناعة» في الصفحة الرئيسية.'
                     : 'انضم إلى InnoBridge كطالب: فريقك، مساحة العمل، وربطك بمشرفك. ابدأ من بطاقة «الطلاب» في الصفحة الرئيسية.',
-              industryNote:
-                  'بعد التسجيل ستصل إلى بوابة جهة الصناعة لإدارة التحديات والتعاون مع الأكاديميين.',
-              facultyHint:
-                  'يمكن تنشيط حساب واحد بدور واحد الآن؛ إن كان لك أكثر من دور رسمي اتصل بالإدارة لربط الصلاحيات.',
-              facultySection: 'صفة حساب الأكاديمي',
-              roleHod: 'مشرف قسم (رئيس القسم)',
-              roleHodDesc: 'لوحة الموافقة على الفِرَق، المراجعة، وتعيين المشرفين ضمن القسم.',
-              roleSupervisor: 'مشرف مشاريع تخرج',
-              roleSupervisorDesc: 'مجموعات الإشراف، المراحل، التقييم والتسليمات مع الطلاب.',
-              name: 'الاسم',
-              email: 'البريد الإلكتروني',
-              password: 'كلمة المرور',
-              confirmPassword: 'تأكيد كلمة المرور',
-              alreadyRegistered: 'لديك حساب بالفعل؟',
-              register: 'إنشاء الحساب',
-          }
+            industryNote:
+                'بعد التسجيل ستصل إلى بوابة جهة الصناعة لإدارة التحديات والتعاون مع الأكاديميين.',
+            facultyHint:
+                'يمكن تنشيط حساب واحد بدور واحد الآن؛ إن كان لك أكثر من دور رسمي اتصل بالإدارة لربط الصلاحيات.',
+            facultySection: 'صفة حساب الأكاديمي',
+            roleHod: 'مشرف قسم (رئيس القسم)',
+            roleHodDesc: 'لوحة الموافقة على الفِرَق، المراجعة، وتعيين المشرفين ضمن القسم.',
+            roleSupervisor: 'مشرف مشاريع تخرج',
+            roleSupervisorDesc: 'مجموعات الإشراف، المراحل، التقييم والتسليمات مع الطلاب.',
+            name: 'الاسم',
+            email: 'البريد الإلكتروني',
+            password: 'كلمة المرور',
+            confirmPassword: 'تأكيد كلمة المرور',
+            alreadyRegistered: 'لديك حساب بالفعل؟',
+            register: 'إنشاء الحساب',
+        }
         : {
-              headTitle: isFaculty ? 'Faculty registration' : isIndustry ? 'Industry partner signup' : 'Student registration',
-              title: 'Create account',
-              subtitle: isFaculty
-                  ? 'Complete your details and specify how you engage with InnoBridge.'
-                  : isIndustry
+            headTitle: isFaculty ? 'Faculty registration' : isIndustry ? 'Industry partner signup' : 'Student registration',
+            title: 'Create account',
+            subtitle: isFaculty
+                ? 'Complete your details and specify how you engage with InnoBridge.'
+                : isIndustry
                     ? 'Register your organization to publish challenges and collaborate with academic teams. Start from the Industry card on the home page.'
                     : 'Join InnoBridge as a student — teams, workspace, and supervisor alignment. Start from the Students card on the home page.',
-              industryNote: 'After signup you will land in the industry portal to manage challenges.',
-              facultyHint:
-                  'Accounts are provisioned under a single primary role today; contact your coordinator if that does not reflect your mandate.',
-              facultySection: 'Academic role',
-              roleHod: 'Head of Department',
-              roleHodDesc: 'Team approvals, reviews, and supervisor assignment within your department.',
-              roleSupervisor: 'Graduation-project supervisor',
-              roleSupervisorDesc: 'Student groups you supervise — milestones, feedback, submissions.',
-              name: 'Name',
-              email: 'Email address',
-              password: 'Password',
-              confirmPassword: 'Confirm password',
-              alreadyRegistered: 'Already registered?',
-              register: 'Register',
-          };
+            industryNote: 'After signup you will land in the industry portal to manage challenges.',
+            facultyHint:
+                'Accounts are provisioned under a single primary role today; contact your coordinator if that does not reflect your mandate.',
+            facultySection: 'Academic role',
+            roleHod: 'Head of Department',
+            roleHodDesc: 'Team approvals, reviews, and supervisor assignment within your department.',
+            roleSupervisor: 'Graduation-project supervisor',
+            roleSupervisorDesc: 'Student groups you supervise — milestones, feedback, submissions.',
+            name: 'Name',
+            email: 'Email address',
+            password: 'Password',
+            confirmPassword: 'Confirm password',
+            alreadyRegistered: 'Already registered?',
+            register: 'Register',
+        };
 
     const kind = registrationKindFromPreset(registrationPreset);
 
@@ -112,8 +112,8 @@ export default function Register({ registrationPreset = 'student' }) {
                 ? 'border-emerald-500 bg-emerald-950/35 shadow-[inset_0_0_0_1px_rgba(16,185,129,0.35)]'
                 : 'border-emerald-600 bg-emerald-50 shadow-[inset_0_0_0_1px_rgba(5,150,105,0.22)]'
             : isDark
-              ? 'border-slate-600 bg-slate-800/45 hover:border-slate-500'
-              : 'border-slate-200 bg-white hover:border-slate-300';
+                ? 'border-slate-600 bg-slate-800/45 hover:border-slate-500'
+                : 'border-slate-200 bg-white hover:border-slate-300';
 
     return (
         <GuestLayout>
@@ -124,11 +124,10 @@ export default function Register({ registrationPreset = 'student' }) {
                 <p className="sr-muted mt-1">{t.subtitle}</p>
                 {isIndustry ? (
                     <p
-                        className={`mt-3 rounded-xl border px-3 py-2 text-xs font-semibold leading-relaxed ${
-                            isDark
+                        className={`mt-3 rounded-xl border px-3 py-2 text-xs font-semibold leading-relaxed ${isDark
                                 ? 'border-violet-500/40 bg-violet-950/45 text-violet-100'
                                 : 'border-violet-200 bg-violet-50 text-violet-900'
-                        }`}
+                            }`}
                     >
                         {t.industryNote}
                     </p>
@@ -136,7 +135,7 @@ export default function Register({ registrationPreset = 'student' }) {
                 {isFaculty ? null : isIndustry ? null : (
                     <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
                         {isArabic
-                            ? 'للمشرفين ورؤساء الأقسام استخدم بطاقة «الأكاديميون»، ولجهات الصناعة بطاقة «جهة الصناعة».'
+                            ? 'للمشرفين ورؤساء الأقسام استخدم بطاقة «الأكاالا»، ولجهات الصناعة بطاقة «جهة الصناعة».'
                             : 'Faculty should use the Faculty card; industry partners should use the Industry card.'}
                     </p>
                 )}
@@ -258,9 +257,8 @@ export default function Register({ registrationPreset = 'student' }) {
                 <div className="mt-3 flex items-center justify-between gap-3">
                     <Link
                         href={loginHref}
-                        className={`rounded-md text-sm underline focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
-                            isDark ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'
-                        }`}
+                        className={`rounded-md text-sm underline focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+                            }`}
                     >
                         {t.alreadyRegistered}
                     </Link>
