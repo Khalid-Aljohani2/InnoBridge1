@@ -26,6 +26,16 @@ class User extends Authenticatable
         'is_active' => 'boolean',
     ];
 
+    public function getIsActiveAttribute($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    public function setIsActiveAttribute($value)
+    {
+        $this->attributes['is_active'] = filter_var($value, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
+    }
+
     // العلاقة: المستخدم ينتمي لجامعة (قد تكون null للشركات)
     public function university()
     {

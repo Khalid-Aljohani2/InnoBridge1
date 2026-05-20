@@ -133,7 +133,7 @@ export default function Welcome({ auth }) {
                 id: 'students',
                 anchorId: 'students',
                 Icon: Lightbulb,
-                iconWrap: 'from-[#0B2447] to-[#19A7CE]',
+                iconWrap: 'from-ib-navy-dark to-ib-cyan-dark',
                 title: t.students,
                 desc: t.studentsDesc,
             },
@@ -141,7 +141,7 @@ export default function Welcome({ auth }) {
                 id: 'supervisor',
                 anchorId: 'faculty',
                 Icon: UsersRound,
-                iconWrap: 'from-[#19A7CE] to-[#10B981]',
+                iconWrap: 'from-ib-cyan-dark to-ib-mint',
                 title: t.instructors,
                 desc: t.instructorsDesc,
             },
@@ -149,7 +149,7 @@ export default function Welcome({ auth }) {
                 id: 'industry',
                 anchorId: 'industry',
                 Icon: Briefcase,
-                iconWrap: 'from-[#10B981] to-[#0B2447]',
+                iconWrap: 'from-ib-mint to-ib-navy-dark',
                 title: t.industry,
                 desc: t.industryDesc,
             },
@@ -167,8 +167,7 @@ export default function Welcome({ auth }) {
 
             <div
                 dir={isArabic ? 'rtl' : 'ltr'}
-                className={`relative flex min-h-screen flex-col overflow-hidden transition-all duration-500 ${isDark ? 'sr-app-bg-dark' : 'sr-app-bg'
-                    }`}
+                className="relative flex min-h-screen flex-col overflow-hidden transition-all duration-500 bg-ib-navy-light dark:bg-ib-navy-dark"
             >
                 <AuroraBackground isDark={isDark} />
 
@@ -180,55 +179,53 @@ export default function Welcome({ auth }) {
                             <div className="relative z-10 mx-auto mt-6 w-full max-w-6xl flex-1">
                                 <div
                                     id="platform-intro"
-                                    className={`rounded-3xl border p-8 shadow-2xl backdrop-blur-xl transition md:p-12 ${isDark ? 'border-slate-700 bg-slate-900/80' : 'border-white/80 bg-white/90'
-                                        }`}
+                                    className="rounded-3xl border p-8 shadow-2xl backdrop-blur-xl transition md:p-12 bg-white/80 dark:bg-ib-navy-dark/80 border-gray-200 dark:border-slate-700"
                                 >
                                     <p
-                                        className={`mb-5 inline-flex flex-wrap items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold shadow-sm ${isDark ? 'border-[#19A7CE]/40 bg-[#0B2447]/40 text-slate-100' : 'border-[#19A7CE]/30 bg-[#19A7CE]/10 text-[#0B2447]'
-                                            }`}
+                                        className="mb-5 inline-flex flex-wrap items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold shadow-sm border-ib-cyan-dark/30 bg-ib-cyan-dark/10 text-ib-navy-dark dark:border-ib-cyan-dark/40 dark:bg-ib-navy-dark/40 dark:text-slate-100"
                                     >
                                         <span>{isArabic ? 'جسر الابتكار' : 'InnoBridge'}</span>
-                                        <span className={isDark ? 'text-slate-500' : 'text-slate-400'}>|</span>
-                                        <span className="text-[#19A7CE]">{isArabic ? 'InnoBridge' : 'Innovation Bridge'}</span>
+                                        <span className="text-slate-400 dark:text-slate-500">|</span>
+                                        <span className="text-ib-cyan-dark">{isArabic ? 'InnoBridge' : 'Innovation Bridge'}</span>
                                     </p>
 
-                                    <p className={`mb-8 text-base font-semibold leading-relaxed md:text-lg ${isDark ? 'text-[#b7ebff]' : 'text-[#0B2447]'}`}>
+                                    <p className="mb-8 text-base font-semibold leading-relaxed md:text-lg text-ib-navy-dark dark:text-ib-cyan-dark">
                                         {t.subSlogan}
                                     </p>
 
-                                    <h1 className={`mb-6 text-balance text-3xl font-black leading-snug md:text-5xl md:leading-tight ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+                                    <h1 className="mb-6 text-balance text-3xl font-black leading-snug md:text-5xl md:leading-tight text-ib-navy-dark dark:text-slate-100">
                                         {t.mainSlogan}
                                     </h1>
 
-                                    <p className={`mb-10 max-w-4xl text-pretty text-lg leading-relaxed md:text-xl ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.ecosystemDesc}</p>
+                                    <p className="mb-10 max-w-4xl text-pretty text-lg leading-relaxed md:text-xl text-slate-600 dark:text-slate-300">{t.ecosystemDesc}</p>
 
                                     <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
                                         <div
-                                            className={`rounded-2xl border p-5 ${isDark ? 'border-[#0B2447]/60 bg-[#0B2447]/30' : 'border-[#19A7CE]/25 bg-[#19A7CE]/10'} sr-card-hover`}
+                                            className="rounded-2xl border p-5 border-ib-cyan-dark/25 bg-ib-cyan-dark/10 dark:border-ib-navy-dark/60 dark:bg-ib-navy-dark/30 sr-card-hover"
                                         >
-                                            <h3 className={`mb-2 flex items-center gap-2 font-bold ${isDark ? 'text-[#8ad9eb]' : 'text-[#0B2447]'}`}>
-                                                <GraduationCap className="h-5 w-5 text-[#19A7CE]" aria-hidden />
+                                            <h3 className="mb-2 flex items-center gap-2 font-bold text-ib-navy-dark dark:text-ib-cyan-dark">
+                                                <GraduationCap className="h-5 w-5 text-ib-cyan-dark" aria-hidden />
                                                 {t.card1Title}
                                             </h3>
-                                            <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{t.card1Desc}</p>
+                                            <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">{t.card1Desc}</p>
                                         </div>
                                         <div
-                                            className={`rounded-2xl border p-5 ${isDark ? 'border-emerald-900/50 bg-emerald-950/40' : 'border-emerald-100 bg-emerald-50/70'} sr-card-hover`}
+                                            className="rounded-2xl border p-5 border-emerald-100 bg-emerald-50/70 dark:border-emerald-900/50 dark:bg-emerald-950/40 sr-card-hover"
                                         >
-                                            <h3 className={`mb-2 flex items-center gap-2 font-bold ${isDark ? 'text-emerald-200' : 'text-emerald-900'}`}>
+                                            <h3 className="mb-2 flex items-center gap-2 font-bold text-emerald-900 dark:text-emerald-200">
                                                 <Lightbulb className="h-5 w-5 text-emerald-500" aria-hidden />
                                                 {t.card2Title}
                                             </h3>
-                                            <p className={`text-sm leading-relaxed ${isDark ? 'text-emerald-300' : 'text-emerald-800'}`}>{t.card2Desc}</p>
+                                            <p className="text-sm leading-relaxed text-emerald-800 dark:text-emerald-300">{t.card2Desc}</p>
                                         </div>
                                         <div
-                                            className={`rounded-2xl border p-5 ${isDark ? 'border-slate-700 bg-slate-900/50' : 'border-slate-200 bg-slate-50/90'} sr-card-hover`}
+                                            className="rounded-2xl border p-5 border-slate-200 bg-slate-50/90 dark:border-slate-700 dark:bg-ib-navy-dark/50 sr-card-hover"
                                         >
-                                            <h3 className={`mb-2 flex items-center gap-2 font-bold ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>
-                                                <Briefcase className="h-5 w-5 text-[#0B2447] dark:text-slate-200" aria-hidden />
+                                            <h3 className="mb-2 flex items-center gap-2 font-bold text-slate-900 dark:text-slate-200">
+                                                <Briefcase className="h-5 w-5 text-ib-navy-dark dark:text-slate-200" aria-hidden />
                                                 {t.card3Title}
                                             </h3>
-                                            <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.card3Desc}</p>
+                                            <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">{t.card3Desc}</p>
                                         </div>
                                     </div>
 
@@ -243,39 +240,34 @@ export default function Welcome({ auth }) {
                             <>
                                 <div className="relative z-10 mx-auto mb-14 max-w-4xl px-2 text-center">
                                     <p
-                                        className={`mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1 text-sm font-bold shadow-sm ${isDark ? 'border-[#19A7CE]/40 bg-[#0B2447]/40 text-slate-100' : 'border-slate-200 bg-white/95 text-[#0B2447]'
-                                            }`}
+                                        className="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1 text-sm font-bold shadow-sm border-slate-200 bg-white/95 text-ib-navy-dark dark:border-ib-cyan-dark/40 dark:bg-ib-navy-dark/40 dark:text-slate-100"
                                     >
-                                        <span className="text-[#19A7CE]">{t.ecosystemBadge}</span>
+                                        <span className="text-ib-cyan-dark">{t.ecosystemBadge}</span>
                                         <span className="opacity-50">·</span>
-                                        <span className={isDark ? 'text-slate-300' : 'text-slate-600'}>{t.subSlogan}</span>
+                                        <span className="text-slate-600 dark:text-slate-300">{t.subSlogan}</span>
                                     </p>
-                                    <h1 className={`mb-5 text-pretty text-4xl font-black tracking-tight md:text-5xl ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+                                    <h1 className="mb-5 text-pretty text-4xl font-black tracking-tight md:text-5xl text-ib-navy-dark dark:text-slate-100">
                                         {isArabic ? (
                                             <>
                                                 <span>{t.roleTitlePrimary}</span>
-                                                <span className="mx-2 font-semibold text-[#19A7CE]">|</span>
-                                                <span className="text-[#19A7CE]">{t.roleTitleAccent}</span>
+                                                <span className="mx-2 font-semibold text-ib-cyan-dark">|</span>
+                                                <span className="text-ib-cyan-dark">{t.roleTitleAccent}</span>
                                             </>
                                         ) : (
                                             <>
-                                                <span className="text-[#19A7CE]">{t.roleTitleAccent}</span>
+                                                <span className="text-ib-cyan-dark">{t.roleTitleAccent}</span>
                                                 <span className="mx-2 font-semibold text-slate-400">|</span>
                                                 <span>{t.roleTitlePrimary}</span>
                                             </>
                                         )}
                                     </h1>
-                                    <p className={`mx-auto max-w-2xl text-pretty text-lg leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.roleDesc}</p>
-                                    <p className={`mt-4 text-sm font-semibold ${isDark ? 'text-[#8ad9eb]' : 'text-[#0B2447]'}`}>{t.mainSlogan}</p>
+                                    <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 dark:text-slate-300">{t.roleDesc}</p>
+                                    <p className="mt-4 text-sm font-semibold text-ib-navy-dark dark:text-ib-cyan-dark">{t.mainSlogan}</p>
                                     <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                                         <button
                                             type="button"
                                             onClick={() => setShowIntro(true)}
-                                            className={
-                                                isDark
-                                                    ? 'sr-btn-action-neutral inline-flex items-center gap-2 px-6 py-3 text-sm font-bold'
-                                                    : 'sr-btn-action-neutral inline-flex items-center gap-2 px-6 py-3 text-sm font-bold'
-                                            }
+                                            className="sr-btn-action-neutral inline-flex items-center gap-2 px-6 py-3 text-sm font-bold"
                                         >
                                             {t.aboutUs}
                                         </button>
@@ -296,16 +288,15 @@ export default function Welcome({ auth }) {
                                                     <div
                                                         key={role.id}
                                                         id={role.anchorId}
-                                                        className={`flex scroll-mt-36 flex-col items-center rounded-3xl border px-8 pb-10 pt-10 text-center shadow-sm backdrop-blur transition md:pb-12 ${isDark ? 'border-slate-700 bg-slate-900/80 shadow-lg' : 'border-gray-100 bg-white/92 sr-card-hover'
-                                                            }`}
+                                                        className="flex scroll-mt-36 flex-col items-center rounded-3xl border px-8 pb-10 pt-10 text-center shadow-sm backdrop-blur transition md:pb-12 bg-white/80 border-gray-200 sr-card-hover dark:bg-ib-navy-dark/80 dark:border-slate-700 dark:shadow-lg"
                                                     >
                                                         <div
                                                             className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${role.iconWrap} text-white shadow-lg`}
                                                         >
                                                             <Icon className="h-8 w-8" strokeWidth={1.85} aria-hidden />
                                                         </div>
-                                                        <h2 className={`mb-3 text-2xl font-bold ${isDark ? 'text-slate-100' : 'text-gray-900'}`}>{role.title}</h2>
-                                                        <p className={`max-w-sm text-sm leading-relaxed md:text-base ${isDark ? 'text-slate-300' : 'text-gray-600'}`}>
+                                                        <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-slate-100">{role.title}</h2>
+                                                        <p className="max-w-sm text-sm leading-relaxed md:text-base text-gray-600 dark:text-slate-300">
                                                             {role.desc}
                                                         </p>
 
@@ -313,10 +304,7 @@ export default function Welcome({ auth }) {
                                                             {role.id === 'students' ? (
                                                                 <Link
                                                                     href="/register"
-                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${isDark
-                                                                        ? 'border border-emerald-500/50 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-900/50'
-                                                                        : 'border border-emerald-200 bg-emerald-50 text-emerald-900 hover:bg-emerald-100'
-                                                                        }`}
+                                                                    className="inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 border border-emerald-200 bg-emerald-50 text-emerald-900 hover:bg-emerald-100 dark:border-emerald-500/50 dark:bg-emerald-950/50 dark:text-emerald-100 dark:hover:bg-emerald-900/50"
                                                                 >
                                                                     {t.registerStudent}
                                                                 </Link>
@@ -324,10 +312,7 @@ export default function Welcome({ auth }) {
                                                             {role.id === 'supervisor' ? (
                                                                 <Link
                                                                     href="/register?role=faculty"
-                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${isDark
-                                                                        ? 'border border-sky-500/50 bg-sky-950/40 text-sky-100 hover:bg-sky-900/40'
-                                                                        : 'border border-sky-200 bg-sky-50 text-sky-900 hover:bg-sky-100'
-                                                                        }`}
+                                                                    className="inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 border border-sky-200 bg-sky-50 text-sky-900 hover:bg-sky-100 dark:border-sky-500/50 dark:bg-sky-950/40 dark:text-sky-100 dark:hover:bg-sky-900/40"
                                                                 >
                                                                     {t.registerFaculty}
                                                                 </Link>
@@ -335,10 +320,7 @@ export default function Welcome({ auth }) {
                                                             {role.id === 'industry' ? (
                                                                 <Link
                                                                     href={route('register.industry')}
-                                                                    className={`inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 ${isDark
-                                                                        ? 'border border-violet-500/50 bg-violet-950/45 text-violet-100 hover:bg-violet-900/40'
-                                                                        : 'border border-violet-200 bg-violet-50 text-violet-900 hover:bg-violet-100'
-                                                                        }`}
+                                                                    className="inline-flex min-h-[3rem] items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold shadow-sm transition hover:brightness-105 border border-violet-200 bg-violet-50 text-violet-900 hover:bg-violet-100 dark:border-violet-500/50 dark:bg-violet-950/45 dark:text-violet-100 dark:hover:bg-violet-900/40"
                                                                 >
                                                                     {t.registerCompany}
                                                                 </Link>
@@ -353,14 +335,11 @@ export default function Welcome({ auth }) {
                                             <Link
                                                 href={route('login')}
                                                 aria-label={isArabic ? 'تسجيل الدخول الموحد' : 'Unified sign in'}
-                                                className={`inline-flex min-w-[14rem] items-center justify-center rounded-2xl px-10 py-4 text-lg font-black shadow-xl transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400/60 ${isDark
-                                                    ? 'bg-gradient-to-r from-emerald-500 to-[#19A7CE] text-emerald-950'
-                                                    : 'bg-gradient-to-r from-[#0B2447] via-[#19A7CE] to-emerald-500 text-white'
-                                                    }`}
+                                                className="inline-flex min-w-[14rem] items-center justify-center rounded-2xl px-10 py-4 text-lg font-black shadow-xl transition hover:brightness-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400/60 bg-gradient-to-r from-ib-navy-dark via-ib-cyan-dark to-emerald-500 text-white dark:from-emerald-500 dark:to-ib-cyan-dark dark:text-emerald-950"
                                             >
                                                 {t.joinUs}
                                             </Link>
-                                            <p className={`mx-auto max-w-xl text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                                            <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                                                 {t.joinUsHint}
                                             </p>
                                         </div>

@@ -84,7 +84,7 @@
     .sr-app-bg {
         @apply bg-slate-50;
         background-image:
-            radial-gradient(circle at 15% 10%, rgba(11, 36, 71, 0.09), transparent 28%),
+            radial-gradient(circle at 15% 10%, rgba(71, 11, 11, 0.09), transparent 28%),
             radial-gradient(circle at 85% 5%, rgba(25, 167, 206, 0.12), transparent 22%);
     }
 
@@ -432,6 +432,7 @@
         opacity: 0;
         transform: translateY(8px) scale(0.98);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);

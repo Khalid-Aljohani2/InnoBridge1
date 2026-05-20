@@ -28,6 +28,16 @@ class Team extends Model
         'is_active' => 'boolean',
     ];
 
+    public function getIsActiveAttribute($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    public function setIsActiveAttribute($value)
+    {
+        $this->attributes['is_active'] = filter_var($value, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
+    }
+
     // العلاقة: قائد الفريق (طالب)
     public function leader()
     {

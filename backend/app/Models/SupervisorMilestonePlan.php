@@ -17,6 +17,16 @@ class SupervisorMilestonePlan extends Model
         'is_active' => 'boolean',
     ];
 
+    public function getIsActiveAttribute($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    public function setIsActiveAttribute($value)
+    {
+        $this->attributes['is_active'] = filter_var($value, FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false';
+    }
+
     public function supervisor()
     {
         return $this->belongsTo(User::class, 'supervisor_id');

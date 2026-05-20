@@ -19,8 +19,14 @@ export default {
             },
             colors: {
                 ib: {
-                    navy: '#0B2447',
-                    cyan: '#19A7CE',
+                    navy: {
+                        light: '#f3f4f6',
+                        dark: '#0B2447',
+                    },
+                    cyan: {
+                        light: '#0284c7',
+                        dark: '#19A7CE',
+                    },
                     mint: '#10B981',
                 },
             },
