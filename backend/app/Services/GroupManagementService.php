@@ -327,7 +327,7 @@ class GroupManagementService
             ->where('role', 'supervisor');
 
         if (CachedSchema::hasColumn('users', 'is_active')) {
-            $supervisorQuery->where('is_active', true);
+            $supervisorQuery->where('is_active', 'true');
         }
 
         $supervisor = $supervisorQuery->first();
