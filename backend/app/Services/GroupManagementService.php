@@ -326,6 +326,7 @@ class GroupManagementService
             ->where('id', $supervisorId)
             ->where('role', 'supervisor');
 
+        // Fix Postgres boolean operator mismatch (boolean = integer) by using 'true' string
         if (CachedSchema::hasColumn('users', 'is_active')) {
             $supervisorQuery->where('is_active', 'true');
         }
